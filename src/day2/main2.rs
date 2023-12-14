@@ -1,36 +1,30 @@
 fn solve(input: &str) -> u32 {
-    // let mut all_games: Vec<GameSet>; // (r, g, b)
     let mut sum: u32 = 0;
     for line in input.lines() {
         let games: Vec<&str> = line.split(":").collect();
-        let all_shows: Vec<&str> = games[1].split(";").collect();
-        // let mut game_set: GameSet = GameSet {
-        //     game_id: id,
-        //     rounds: Vec::new(),
-        // };
+        let all_shows: Vec<&str> = games[1].split(';').collect();
         let mut max_red: u32 = 0;
         let mut max_green: u32 = 0;
         let mut max_blue: u32 = 0;
         for s in all_shows {
-            let shows: Vec<&str> = s.split(";").collect();
+            let shows: Vec<&str> = s.split(';').collect();
             for s2 in shows {
-                let each_show: Vec<&str> = s2.split(",").collect();
+                let each_show: Vec<&str> = s2.split(',').collect();
                 for s3 in each_show {
                     if s3.contains("red") {
-                        let first = s3.trim().split(" ").next().unwrap();
+                        let first = s3.trim().split(' ').next().unwrap();
                         let local_max_red = first.parse::<u32>().unwrap();
                         if local_max_red > max_red {
                             max_red = local_max_red;
                         }
-                        // show_tuple.0 = first.parse::<u32>().unwrap();
                     } else if s3.contains("green") {
-                        let first = s3.trim().split(" ").next().unwrap();
+                        let first = s3.trim().split(' ').next().unwrap();
                         let local_max_green = first.parse::<u32>().unwrap();
                         if local_max_green > max_green {
                             max_green = local_max_green;
                         }
                     } else if s3.contains("blue") {
-                        let first = s3.trim().split(" ").next().unwrap();
+                        let first = s3.trim().split(' ').next().unwrap();
                         let local_max_blue = first.parse::<u32>().unwrap();
                         if local_max_blue > max_blue {
                             max_blue = local_max_blue;
